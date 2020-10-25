@@ -1,0 +1,74 @@
+@model IEnumerable<IdentityRole>
+@inject IAuthorizationService authorizationService
+
+@{
+    ViewBag.Title = "All Roles";
+}
+
+<h1 class="text-center">All Roles</h1>
+
+@*We use the linq method "Any()" to check if we have any role in the Model and if yes we display the role list*@
+@if (@Model.Any())
+{
+    <a asp-controller="Administration" asp-action="CreateRole" class="btn btn-primary mb-3" style="width: auto">Add a new role</a>
+    foreach (var role in Model)
+    {
+        <div class="card mb-3">
+            <div class="card-header">
+                Role Id : @role.Id
+            </div>
+            <div class="card-body">
+               <h5 class="card-title">@role.Name</h5>
+            </div>
+                <div class="card-footer">
+                    <form method="post" asp-controller="Administration" asp-action="DeleteRole" asp-route-id="@role.Id">
+                        @*Here we check if the loggedin user belongs to the Edit Role policy i.e he has the Edit Role claim*@
+                        @if ((await authorizationService.AuthorizeAsync(User, "EditRolePolicy")).Succeeded)
+                        {
+                            /*Only then are we going to render the Edit button*/
+                            <a class="btn btn-primary" asp-controller="Administration" asp-action="EditRole" asp-route-id="@role.Id">Edit</a>
+                        }
+
+                   @*Here we check if the loggedin user belongs to the Delete Role policy i.e he has the Delete Role claim*@
+                                        @if ((await authorizationService.AuthorizeAsync(User, "DeleteRolePolicy")).Succeeded)
+                    /*Only then are we going to render the Delete button*/
+                                        {
+                        @*We display delete confirmation*@
+                        <span style="display: none" id="confirmDeleteSpan_@role.Id">
+                            <span>Are you sure you want to delete?</span>
+                            @*we made the button type to be "submit" so when we click on yes, the user is deleted*@
+                            <button type="submit" class="btn btn-danger">Yes</button>
+                            @*When the No button is clicked, we call the confirmDelete fn passing our unique id and false for the function to hide the dialog*@
+                            <a href="#" class="btn btn-primary" onclick="confirmDelete('@role.Id', false)">No</a>
+                        </span>
+
+                        <span id="deleteSpan_@role.Id">
+                            @*when the Delete button is clicked, we call the confirmDelete() and true to display the confirmation dialog*@
+                            <a href="#" class="btn btn-danger" onclick="confirmDelete('@role.Id', true)">Delete</a>
+                        </span>
+                        @*End*@
+                                        }
+                    </form>
+                        </div>
+        </div>
+    }
+}
+/*else if we have no roles we render this*/
+else
+{
+    <div class="card">
+        <div class="card-header">
+            No roles created yet
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Use the button to create a role</h5>
+            <a class="btn btn-primary" style="width: auto" asp-controller="Administration" asp-action="CreateRole"> Create Role </a>
+        </div>
+    </div>
+}
+
+@*This js script is used to show and hide the confirm delete dialog*@
+@section Scripts
+{
+    <script src="~/js/CustomScript.js"></script>
+}

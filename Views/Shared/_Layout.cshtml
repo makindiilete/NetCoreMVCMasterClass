@@ -1,0 +1,104 @@
+@inject SignInManager<ApplicationUser> signInManager
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    @*if we are in development environment we load boostrap from our local dir*@
+    <environment include="Development">
+        <link href="~/lib/twitter-bootstrap/css/bootstrap.css" rel="stylesheet">
+    </environment>
+
+    @*if we are in other environment different from development, we want to load boostrap cdn and we include fallback using the "asp-fallback-href" incase cdn fails *@
+    <environment exclude="Development">
+     <link rel="stylesheet"
+           href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+           crossorigin="anonymous"
+                      asp-fallback-href="~/lib/bootstrap/css/bootstrap.min.css"
+                      asp-fallback-test-class="sr-only"
+                      asp-fallback-test-property="position"
+                      asp-fallback-test-value="absolute"
+                      asp-suppress-fallback-integrity="true">
+     </environment>
+
+    <link href="~/css/site.css" rel="stylesheet">
+    <script src="~/lib/jquery/jquery.js"></script>
+    <script src="~/lib/jquery-validate/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <script src="~/lib/twitter-bootstrap/js/bootstrap.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+<div class="container">
+    <a class="navbar-brand"  asp-controller="Home" asp-action="Index">
+        <img src="~/images/employees.png" height="30" width="30" alt="Employees">
+    </a>
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a asp-controller="Home" asp-action="Index" class="nav-link">List</a>
+            </li>
+            <li class="nav-item">
+                <a asp-controller="Home" asp-action="Create" class="nav-link">Create</a>
+            </li>
+            @*We only want to display the "Manage" navlink if the user is an admin*@
+            @*@if (signInManager.IsSignedIn(User) && User.IsInRole("Admin")) {*@
+                           <li class="nav-item dropdown">
+                               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                   Manage
+                               </a>
+                               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                   <a class="dropdown-item" asp-controller="Administration"
+                                      asp-action="ListUsers">Users</a>
+                                   <a class="dropdown-item" asp-controller="Administration"
+                                      asp-action="ListRoles">Roles</a>
+                                     <a class="dropdown-item" asp-controller="Account"
+                                               asp-action="ChangePassword">
+                                              Change Password
+                                           </a>
+                               </div>
+                           </li>
+                       @*}*@
+        </ul>
+
+        <ul class="navbar-nav">
+            @if (signInManager.IsSignedIn(User))
+            {
+                <li class="nav-item">
+                    <form method="post" asp-action="Logout" asp-controller="Account">
+                        <button type="submit" class="nav-link btn btn-link py-0" style="width: auto">
+                            Logout  @User.Identity.Name
+                        </button>
+
+                    </form>
+                </li>
+            }
+            else
+            {
+                <li class="nav-item">
+                    <a asp-controller="Account" asp-action="Register" class="nav-link">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a asp-controller="Account" asp-action="Login" class="nav-link">Login</a>
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+</nav>
+
+<div class="container">
+    @RenderBody()
+</div>
+@if (IsSectionDefined("Scripts"))
+{
+    @RenderSection("Scripts")
+}
+</body>
+</html>

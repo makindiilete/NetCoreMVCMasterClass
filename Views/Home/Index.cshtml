@@ -1,0 +1,29 @@
+@model IEnumerable<Employee>
+
+@{
+    ViewBag.Title = "Employee List";
+}
+        <div class="row">
+    @foreach (var employee in Model)
+    {
+        var photoPath = "~/Images/" + (employee.PhotoPath ?? "noimage.jpg");
+
+            <div class="col-sm-4">
+            <div class="card m-3">
+                <div class="card-header text-center">
+                    <h3>@employee.Name</h3>
+                </div>
+                    @*We dynamically render each employee's photo using the "photoPath" variable*@
+                <img  class="card-img-top img-fluid imageThumbnail" src="@photoPath" asp-append-version="true">
+                    <div class="card-footer text-center">
+                        @*Here we using asp-route-id to dynamically pass the encryptedId of the employee to the url as query params when we clicked on to the Details() action method*@
+                        <a asp-controller="Home" asp-action="Details" asp-route-id="@employee.EncryptedId" class="btn btn-primary m-1">View</a>
+                        @*Here we using asp-route-id to dynamically pass the id of the employee we clicked on to the Edit() action method*@
+                        <a asp-controller="Home" asp-action="Edit" asp-route-id="@employee.Id" class="btn btn-primary m-1">Edit</a>
+                        <button class="btn btn-danger m-1">Delete</button>
+                    </div>
+            </div>
+               </div>
+    }
+                    </div>
+

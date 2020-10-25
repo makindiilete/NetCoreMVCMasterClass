@@ -1,0 +1,14 @@
+@*The value we passed to this view is "id.value" so our model is an integer*@
+@model int
+
+@{
+    ViewBag.Title = "404 Error";
+}
+
+<div class="alert alert-danger mt-2 mb-2">
+    <h4>Not Found Error : </h4>
+    <hr>
+    @*@Model here represents the value for "id.Value" dt we passed to the view*@
+    <h5>Employee With The Given Id : @Model Could Not Be Found</h5>
+</div>
+<a asp-controller="Home" asp-action="Index" class="btn btn-success" style="width: auto">Click Here To See The List Of All Employees</a>

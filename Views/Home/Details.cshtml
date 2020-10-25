@@ -1,0 +1,33 @@
+@model HomeDetailsViewModel
+
+@{
+    ViewBag.Title = "Employee Details";
+    /*if the user haave a photo in the database, we get its photopath else we use "noimage.jpg"*/
+    var photoPath = "~/Images/" + (Model.Employee.PhotoPath ?? "noimage.jpg");
+}
+<div class="row">
+<div class="col-sm-8 offset-2">
+    <div class="card m-3">
+        <div class="card-header">
+            <h3>@Model.Employee.Name</h3>
+        </div>
+        @*We dynamically render each employee's photo using the "photoPath" variable*@
+        <img src="@photoPath" class="card-img-top"  asp-append-version="true">
+        <div class="card-body text-center">
+               <div>ID : @Model.Employee.Id</div>
+                <div>Name : @Model.Employee.Name</div>
+                <div>Email : @Model.Employee.Email</div>
+                <div>Department : @Model.Employee.Department</div>
+        </div>
+        <div class="card-footer text-center">
+            <a asp-controller="Home" asp-action="Index" class="btn btn-primary">Back</a>
+             @*Here we using asp-route-id to dynamically pass the id of the employee we clicked on to the Edit() action method*@
+             <a asp-controller="Home" asp-action="Edit" asp-route-id="@Model.Employee.Id" class="btn btn-primary m-1">Edit</a>
+            <button class="btn btn-danger">Delete</button>
+        </div>
+    </div>
+
+
+
+</div>
+</div>

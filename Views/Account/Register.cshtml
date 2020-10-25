@@ -1,0 +1,70 @@
+@*Injecting our model*@
+@model RegisterViewModel
+
+@{
+    ViewBag.Title = "User Registration";
+}
+
+<form method="post" class="py-5">
+    <h1 class="text-center">User Registration</h1>
+    <hr>
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="form-group">
+                <label asp-for="@Model.Email"></label>
+                <input asp-for="@Model.Email" class="form-control" placeholder="Email">
+                <span asp-validation-for="@Model.Email" class="text-danger"></span>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+         <div class="form-group">
+             <label asp-for="@Model.Password"></label>
+             <input asp-for="@Model.Password" class="form-control" placeholder="Password">
+                <span asp-validation-for="@Model.Password" class="text-danger"></span>
+         </div>
+
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+
+    <div class="form-group">
+        <label asp-for="@Model.ConfirmPassword"></label>
+      <input asp-for="@Model.ConfirmPassword" class="form-control" placeholder="Confirm Password">
+                        <span asp-validation-for="@Model.ConfirmPassword" class="text-danger"></span>
+    </div>
+        </div>
+    </div>
+
+     <div class="row">
+            <div class="col-md-6 offset-md-3">
+
+        <div class="form-group">
+            <label asp-for="@Model.City"></label>
+          <input asp-for="@Model.City" class="form-control" placeholder="City">
+        </div>
+            </div>
+        </div>
+
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div asp-validation-summary="All" class="text-danger"></div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div>
+                <button class="btn btn-primary">Register</button>
+            </div>
+        </div>
+    </div>
+
+</form>

@@ -1,0 +1,64 @@
+@model IEnumerable<ApplicationUser>
+
+@{
+    ViewBag.Title = "All Users";
+}
+
+<h1 class="text-center">All Users</h1>
+
+@*We use the linq method "Any()" to check if we have any role in the Model and if yes we display the role list*@
+@if (@Model.Any())
+{
+    <a asp-controller="Account" asp-action="Register" class="btn btn-primary mb-3" style="width: auto">Add a new user</a>
+    foreach (var user in Model)
+    {
+        <div class="card mb-3">
+            <div class="card-header">
+                User Id : @user.Id
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">@user.Email</h5>
+            </div>
+            <div class="card-footer">
+                @*Adjusting the delete and edit button*@
+                <form method="post" asp-controller="Administration" asp-action="DeleteUser" asp-route-id="@user.Id">
+                    <a class="btn btn-primary" asp-controller="Administration" asp-action="EditUser" asp-route-id="@user.Id">Edit</a>
+                    @*We display delete confirmation*@
+                    <span style="display: none" id="confirmDeleteSpan_@user.Id">
+                        <span>Are you sure you want to delete?</span>
+                        @*we made the button type to be "submit" so when we click on yes, the user is deleted*@
+                        <button type="submit" class="btn btn-danger">Yes</button>
+                        @*When the No button is clicked, we call the confirmDelete fn passing our unique id and false for the function to hide the dialog*@
+                        <a href="#" class="btn btn-primary" onclick="confirmDelete('@user.Id', false)">No</a>
+                    </span>
+
+                    <span id="deleteSpan_@user.Id">
+                        @*when the Delete button is clicked, we call the confirmDelete() and true to display the confirmation dialog*@
+                        <a href="#" class="btn btn-danger" onclick="confirmDelete('@user.Id', true)">Delete</a>
+                    </span>
+                    @*End*@
+                </form>
+            </div>
+        </div>
+    }
+}
+/*else if we have no users we render this*/
+else
+{
+    <div class="card">
+        <div class="card-header">
+            No users created yet
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Use the button to create a user</h5>
+            <a class="btn btn-primary" style="width: auto" asp-controller="Account" asp-action="Register"> Create User </a>
+        </div>
+    </div>
+}
+
+
+@*This js script is used to show and hide the confirm delete dialog*@
+@section Scripts
+{
+    <script src="~/js/CustomScript.js"></script>
+}

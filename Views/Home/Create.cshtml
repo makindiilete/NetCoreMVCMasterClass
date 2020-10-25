@@ -1,0 +1,89 @@
+@*Injecting our model*@
+@model EmployeeCreateViewModel
+
+@{
+    ViewBag.Title = "Create Employee";
+}
+<form  enctype="multipart/form-data" asp-controller="Home" asp-action="Create" method="post" class="py-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="form-group">
+                <label asp-for="@Model.Employee.Name"></label>
+                <input asp-for="@Model.Employee.Name" class="form-control" placeholder="Name">
+                @*Here we add validation for the Name field using the "asp-validation-for" attribute*@
+                <span asp-validation-for="@Model.Employee.Name" class="text-danger"></span>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+         <div class="form-group">
+             <label asp-for="@Model.Employee.Email"></label>
+             <input asp-for="@Model.Employee.Email" class="form-control" placeholder="Email">
+                @*Here we add validation for the Email field using the "asp-validation-for" attribute*@
+                <span asp-validation-for="@Model.Employee.Email" class="text-danger"></span>
+         </div>
+
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+
+    <div class="form-group">
+        <label asp-for="@Model.Employee.Department"></label>
+        <select asp-for="@Model.Employee.Department" class="form-control" asp-items="Html.GetEnumSelectList<DeptEnum>()">
+            @*We add this default option to show as first option and the value is set to empty string*@
+            <option value="">Please Select</option>
+        </select>
+                     @*Here we add validation for the select list using the "asp-validation-for" attribute*@
+                        <span asp-validation-for="@Model.Employee.Department" class="text-danger"></span>
+    </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div asp-validation-summary="All" class="text-danger"></div>
+        </div>
+    </div>
+
+     <div class="row">
+            <div class="col-md-6 offset-md-3">
+             <div class="form-group">
+                 <label asp-for="@Model.Photo"></label>
+                 <div class="custom-file">
+                 <input asp-for="@Model.Photo" class="form-control custom-file-input" placeholder="Email">
+                 <label class="custom-file-label">Choose File...</label>
+                 </div>
+             </div>
+
+            </div>
+        </div>
+
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div>
+                <button class="btn btn-primary">Create</button>
+            </div>
+        </div>
+    </div>
+    @*this is jquery code to fix our selected file not updating in the form control*@
+@section Scripts
+{
+    <script>
+     $(document).ready(function () {
+         /*we select the file input field by its class name and bind to its change event*/
+                $('.custom-file-input').on("change", function () {
+                    //we get the file name of the selected file
+                    var fileName = $(this).val().split("\\").pop();
+                    //we then change the label to the name of the selected file
+                    $(this).next('.custom-file-label').html(fileName);
+                });
+            });
+    </script>
+}
+</form>

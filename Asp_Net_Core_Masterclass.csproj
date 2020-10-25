@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <!--The value here "ade85be3-d69f-4e00-b3ea-91b102c39457" is a random string appended to the path-->
+    <UserSecretsId>ade85be3-d69f-4e00-b3ea-91b102c39457</UserSecretsId>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App">
+      <PrivateAssets Condition="'%(PackageReference.Version)' == ''">all</PrivateAssets>
+      <Publish Condition="'%(PackageReference.Version)' == ''">true</Publish>
+    </PackageReference>
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="NLog.Web.AspNetCore" Version="4.9.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.4" />
+    <PackageReference Include="Microsoft.AspNetCore" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.2.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="2.2.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="2.2.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="5.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="5.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="5.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Screen Shot 2020-01-15 at 12.51.55 PM.png" />
+    <None Remove="CLASS\**" />
+    <None Remove="Asp_Net_Core_Restful_Api\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\Test\Update.cshtml" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap.css" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap.css.map" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap.min.css" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.js.map" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\bootstrap-grid.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\bootstrap-reboot.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\bootstrap.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\mixins\_alert.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\mixins\_background-variant.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\mixins\_badge.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\mixins\_border-radius.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\mixins\_box-shadow.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\mixins\_breakpoints.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\mixins\_buttons.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\mixins\_caret.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\mixins\_clearfix.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\mixins\_deprecate.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\mixins\_float.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\mixins\_forms.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\mixins\_gradients.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\mixins\_grid-framework.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\mixins\_grid.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\mixins\_hover.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\mixins\_image.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\mixins\_list-group.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\mixins\_lists.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\mixins\_nav-divider.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\mixins\_pagination.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\mixins\_reset-text.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\mixins\_resize.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\mixins\_screen-reader.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\mixins\_size.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\mixins\_table-row.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\mixins\_text-emphasis.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\mixins\_text-hide.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\mixins\_text-truncate.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\mixins\_transition.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\mixins\_visibility.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\utilities\_align.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\utilities\_background.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\utilities\_borders.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\utilities\_clearfix.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\utilities\_display.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\utilities\_embed.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\utilities\_flex.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\utilities\_float.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\utilities\_overflow.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\utilities\_position.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\utilities\_screenreaders.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\utilities\_shadows.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\utilities\_sizing.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\utilities\_spacing.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\utilities\_stretched-link.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\utilities\_text.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\utilities\_visibility.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\vendor\_rfs.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\_alert.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\_badge.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\_breadcrumb.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\_button-group.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\_buttons.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\_card.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\_carousel.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\_close.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\_code.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\_custom-forms.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\_dropdown.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\_forms.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\_functions.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\_grid.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\_images.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\_input-group.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\_jumbotron.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\_list-group.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\_media.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\_mixins.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\_modal.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\_nav.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\_navbar.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\_pagination.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\_popover.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\_print.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\_progress.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\_reboot.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\_root.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\_spinners.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\_tables.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\_toasts.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\_tooltip.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\_transitions.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\_type.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\_utilities.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\scss\_variables.scss" />
+    <_ContentIncludedByDefault Remove="AspNet Core Api\appsettings.Development.json" />
+    <_ContentIncludedByDefault Remove="AspNet Core Api\appsettings.json" />
+    <_ContentIncludedByDefault Remove="AspNet Core Api\obj\AspNet Core Api.csproj.nuget.dgspec.json" />
+    <_ContentIncludedByDefault Remove="AspNet Core Api\obj\project.assets.json" />
+    <_ContentIncludedByDefault Remove="AspNet Core Api\obj\project.packagespec.json" />
+    <_ContentIncludedByDefault Remove="AspNet Core Api\Properties\launchSettings.json" />
+    <_ContentIncludedByDefault Remove="Views\EmployeeApi\Create.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\EmployeeApi\Delete.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\EmployeeApi\Details.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\EmployeeApi\Edit.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\EmployeeApi\Index.cshtml" />
+    <_ContentIncludedByDefault Remove="Asp_Net_Core_Restful_Api\appsettings.Development.json" />
+    <_ContentIncludedByDefault Remove="Asp_Net_Core_Restful_Api\appsettings.json" />
+    <_ContentIncludedByDefault Remove="Asp_Net_Core_Restful_Api\obj\Asp_Net_Core_Restful_Api.csproj.nuget.dgspec.json" />
+    <_ContentIncludedByDefault Remove="Asp_Net_Core_Restful_Api\obj\project.assets.json" />
+    <_ContentIncludedByDefault Remove="Asp_Net_Core_Restful_Api\obj\project.packagespec.json" />
+    <_ContentIncludedByDefault Remove="Asp_Net_Core_Restful_Api\Properties\launchSettings.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="CLASS\**" />
+    <Compile Remove="Asp_Net_Core_Restful_Api\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove="CLASS\**" />
+    <EmbeddedResource Remove="Asp_Net_Core_Restful_Api\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="CLASS\**" />
+    <Content Remove="Asp_Net_Core_Restful_Api\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="wwwroot\lib" />
+  </ItemGroup>
+</Project>

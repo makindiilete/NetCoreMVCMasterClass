@@ -1,0 +1,14 @@
+@{
+    ViewBag.Title = "Not Found";
+}
+@*we display our error msg*@
+<h5>@ViewBag.ErrorMessage</h5>
+
+
+@*
+
+WE REMOVE AL THESE CODE BELOW BECAUSE WE ARE NO LONGER DISPLAYING OUR ERRORS BUT LOGGING IT
+
+<h5>Url : - <span class="text-danger"> @ViewBag.Path</span></h5>
+<h5>Query String : - <span class="text-danger"> @ViewBag.QS</span></h5>*@
+<a asp-controller="Home" asp-action="Index" class="btn btn-success" style="width: auto">Click Here To Navigate To The Home Page</a>

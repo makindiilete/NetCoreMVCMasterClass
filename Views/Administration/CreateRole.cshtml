@@ -1,0 +1,36 @@
+@model CreateRoleViewModel
+
+@{
+    ViewBag.Title = "Create New Role";
+}
+
+<form method="post" class="py-5">
+    <h1 class="text-center">Create New Role</h1>
+    <hr>
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="form-group">
+                <label asp-for="@Model.RoleName"></label>
+                <input asp-for="@Model.RoleName" class="form-control" placeholder="Enter Role Name">
+                <span asp-validation-for="@Model.RoleName" class="text-danger"></span>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div asp-validation-summary="All" class="text-danger"></div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div>
+                <button class="btn btn-primary" style="width: auto">Create Role</button>
+            </div>
+        </div>
+    </div>
+
+</form>
